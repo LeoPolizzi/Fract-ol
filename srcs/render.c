@@ -52,22 +52,24 @@ static int	julia(t_fractdata *fractdata, double zr, double zi)
 	return (n);
 }
 
-static int	burning_ship(double pr, double pi)
+int	burning_ship(double cr, double ci)
 {
 	int		n;
 	double	zr;
 	double	zi;
 	double	tmp;
 
-	n = 0;
 	zr = 0;
 	zi = 0;
+	n = 0;
 	while (n < MAX_ITERATIONS)
 	{
-		if ((zi * zi + zr * zr) > 4.0)
+		if ((zr * zr + zi * zi) > 4.0)
 			break ;
-		tmp = 2 * fabs(zr * zi) + pi;
-		zr = fabs(zr * zr - zi * zi) + pr;
+		zr = fabs(zr);
+		zi = fabs(zi);
+		tmp = 2 * zr * zi + ci;
+		zr = zr * zr - zi * zi + cr;
 		zi = tmp;
 		n++;
 	}

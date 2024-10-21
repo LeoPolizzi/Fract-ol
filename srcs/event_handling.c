@@ -95,6 +95,8 @@ int	key_event(int keycode, t_data *data)
 		move(data, move_speed, 'L');
 	else if (keycode == KEY_RIGHT || keycode == KEY_D)
 		move(data, move_speed, 'R');
+	else if (keycode == KEY_SPC)
+		color_shift(data);
 	render(data);
 	return (0);
 }

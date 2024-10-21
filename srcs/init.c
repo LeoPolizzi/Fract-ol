@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-static void	init_palette(t_fractdata *fractdata)
+void	init_palette(t_fractdata *fractdata)
 {
 	int	i;
 	int	start_color;

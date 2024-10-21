@@ -27,5 +27,6 @@
 # define MOUSE_WHEEL_DOWN 5
 # define KEY_PLUS 61
 # define KEY_MINUS 45
+# define KEY_SPC 32
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lpolizzi <lpolizzi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 13:35:33 by lpolizzi          #+#    #+#             */
-/*   Updated: 2024/10/21 15:43:47 by lpolizzi         ###   ########.fr       */
+/*   Updated: 2024/10/21 18:36:47 by lpolizzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,10 @@ void	get_color(t_data *data, int ac, char **av)
 	}
 	if (ac == 2 || (fractdata->type == JULIA && ac == 4))
 		fractdata->color = DEFAULT_COLOR;
+}
+
+void	color_shift(t_data *data)
+{
+	data->fractdata.color = data->fractdata.color - 256;
+	init_palette(&data->fractdata);
 }

@@ -54,6 +54,7 @@ void	print_controls(void)
 	ft_putendl_fd("\n+====================  Controls  ====================+",
 		1);
 	ft_putendl_fd("WASD or arrow keys\t\tmove view.", 1);
+	ft_putendl_fd("Space bar\t\t\tchange colors.", 1);
 	ft_putendl_fd("+/- keys or scroll wheel\tzoom in and out.", 1);
 	ft_putendl_fd("ESC or close window\t\tquit fract'ol.", 1);
 	ft_putendl_fd("+====================================================+\n",

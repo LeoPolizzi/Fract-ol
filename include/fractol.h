@@ -28,8 +28,8 @@
 # define MAX_ITERATIONS 150
 # define MAX_C_VALUE 2
 # define MIN_C_VALUE -2
-# define DEFAULT_C_REAL -0.766667
-# define DEFAULT_C_IMAGINARY -0.090000
+# define DEFAULT_C_REAL -0.7
+# define DEFAULT_C_IMAGINARY 0.3
 # define DEFAULT_COLOR (int)0xFF421337
 # define MANDELBROT 0
 # define BURNING_SHIP 1
@@ -140,5 +140,7 @@ void			print_controls(void);
 void			print_color_options(void);
 void			print_fractal_options(void);
 int				skip_space_sign(char *str, int *is_neg);
+void			color_shift(t_data *data);
+void			init_palette(t_fractdata *fractdata);
 
 #endif
