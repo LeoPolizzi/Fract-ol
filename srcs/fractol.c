@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-static void	get_set(t_data *data, char **av)
+static void	get_type(t_data *data, char **av)
 {
 	char	first;
 
@@ -29,7 +29,7 @@ static void	get_set(t_data *data, char **av)
 
 static void	handle_args(t_data *data, int ac, char **av)
 {
-	get_set(data, av);
+	get_type(data, av);
 	if (data->fractdata.type != JULIA && ac > 3)
 		help_msg(data);
 	else if (data->fractdata.type == JULIA && ac > 5)

@@ -23,11 +23,12 @@ void	init_palette(t_fractdata *fractdata)
 	start_color = fractdata->color;
 	end_color = 0x000000;
 	color_step = (start_color - end_color) / (MAX_ITERATIONS + 1);
-	while (i < (MAX_ITERATIONS + 1))
+	while (i <= (MAX_ITERATIONS - 1))
 	{
 		fractdata->palette[i] = start_color - (i * color_step);
 		i++;
 	}
+	fractdata->palette[i] = end_color;
 }
 
 static void	init_img(t_data *data)
