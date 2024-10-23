@@ -72,8 +72,8 @@ void	get_starting_complex(t_data *data, int ac, char **av)
 	}
 	fdata->c_real = ft_atod(av[2]);
 	fdata->c_imaginary = ft_atod(av[3]);
-	if (fdata->c_real > 2.0 || fdata->c_real < -2.0 || fdata->c_imaginary >= 2.0
-		|| fdata->c_imaginary <= -2.0)
+	if (fdata->c_real > 2.0 || fdata->c_real < -2.0 || fdata->c_imaginary > 2.0
+		|| fdata->c_imaginary < -2.0)
 		help_msg(data);
 }
 

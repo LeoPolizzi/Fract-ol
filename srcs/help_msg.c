@@ -34,19 +34,24 @@ void	print_color_options(void)
 		1);
 	ft_putendl_fd("Pick a display color by providing a hexadecimal code.", 1);
 	ft_putendl_fd("The hex color code must be formatted as RRGGBB:", 1);
-	ft_putendl_fd("\tWhite:\tFFFFFF\t\tBlack:\t000000", 1);
-	ft_putendl_fd("\tRed:\tFF0000\t\tGreen:\t00FF00", 1);
-	ft_putendl_fd("\tBlue:\t0000FF\t\tYellow:\tFFFF00", 1);
+	ft_putstr_fd("\e[38;2;255;255;255m\tWhite:\tFFFFFF", 1);
+	ft_putendl_fd("\t\e[38;2;128;128;128mBlack:\t000000\e[0m", 1);
+	ft_putstr_fd("\e[38;2;255;0;0m\tRed:\tFF0000", 1);
+	ft_putendl_fd("\t\e[38;2;0;255;0mGreen:\t00FF00\e[0m", 1);
+	ft_putstr_fd("\e[38;2;0;0;255m\tBlue:\t0000FF", 1);
+	ft_putendl_fd("\t\e[38;2;255;255;0mYellow:\tFFFF00\e[0m", 1);
 	ft_putendl_fd("Other interesting colors:", 1);
-	ft_putendl_fd("\tPurple:\t9933FF\t\tOrange:\tCC6600", 1);
-	ft_putendl_fd("\tPink:\tFF3399\t\tTurquoise: 00FF80\t", 1);
+	ft_putstr_fd("\e[38;2;153;51;255m\tPurple:\t9933FF", 1);
+	ft_putendl_fd("\t\e[38;2;204;102;0mOrange:\tCC6600\e[0m", 1);
+	ft_putstr_fd("\e[38;2;255;51;153m\tPink:\tFF3399", 1);
+	ft_putendl_fd("\t\e[38;2;0;255;128mTurquoise: 00FF80\e[0m", 1);
 	ft_putstr_fd("\e[36mUsage example:\t", 1);
 	ft_putendl_fd("./fractol <type> <color>", 1);
-	ft_putendl_fd("\t\t./fractol M 0066FF\e[0m", 1);
+	ft_putendl_fd("\t\t./fractol M 133742\e[0m", 1);
 	ft_putendl_fd("\nFor Julia, you can only specify colors after", 1);
 	ft_putendl_fd("the starting values.", 1);
 	ft_putstr_fd("\e[36mUsage example:\t", 1);
-	ft_putendl_fd("./fractol J 0.285 0.01 CC6600\e[0m", 1);
+	ft_putendl_fd("./fractol J 0.285 0.01 424242\e[0m", 1);
 }
 
 void	print_controls(void)
