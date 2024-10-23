@@ -6,7 +6,7 @@
 /*   By: lpolizzi <lpolizzi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 13:35:49 by lpolizzi          #+#    #+#             */
-/*   Updated: 2024/10/21 13:35:50 by lpolizzi         ###   ########.fr       */
+/*   Updated: 2024/10/23 22:08:40 by lpolizzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	get_starting_complex(t_data *data, int ac, char **av)
 		fdata->c_imaginary = DEFAULT_C_IMAGINARY;
 		return ;
 	}
-	if (ac != 4)
+	if (ac < 4)
 	{
 		help_msg(data);
 	}
