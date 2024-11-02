@@ -12,6 +12,9 @@
 
 #include "fractol.h"
 
+/**
+ * get_type - Parses the main args to get the type of fractal to use.
+ */
 static void	get_type(t_data *data, char **av)
 {
 	char	first;
@@ -27,6 +30,9 @@ static void	get_type(t_data *data, char **av)
 		help_msg(data);
 }
 
+/**
+ * handle_args - Checks for errors and calls functions to parse the main args.
+ */
 static void	handle_args(t_data *data, int ac, char **av)
 {
 	get_type(data, av);

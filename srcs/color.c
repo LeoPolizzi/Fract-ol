@@ -12,15 +12,30 @@
 
 #include "fractol.h"
 
+/**
+ * ft_ishexdigit - Check if a char is an hex digit (0123456789abcdef).
+ */
+static int	ft_ishexdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (c);
+	c = ft_toupper(c);
+	if (c >= 'A' && c <= 'F')
+		return (c);
+	else
+		return (0);
+}
+
+/**
+ * ft_atox_color - Converts a string to an hex representation of an int.
+ */
 static int	ft_atox_color(t_data *data, char *color)
 {
 	int	i;
-	int	j;
 	int	ret;
 
 	ret = 0;
-	i = skip_space_sign_0x(color);
-	j = 0;
+	i = 0;
 	while (color[i] && ft_ishexdigit(color[i]))
 	{
 		if (ft_isdigit(color[i]))
@@ -28,15 +43,19 @@ static int	ft_atox_color(t_data *data, char *color)
 		else
 			ret = (ret * 16) + (ft_toupper(color[i]) - 'A' + 10);
 		i++;
-		j++;
 	}
-	if (j == 6 && !color[i])
+	if (i == 6 && !color[i])
 		return (ret);
 	else
 		help_msg(data);
 	return (-1);
 }
 
+/*
+ * get_color - Gets a color from the args passed from the main.
+ *
+ * 		Defaults to "DEFAULT_COLOR" if the color isn't valid. 
+ */
 void	get_color(t_data *data, int ac, char **av)
 {
 	t_fractdata	*fractdata;
@@ -63,6 +82,9 @@ void	get_color(t_data *data, int ac, char **av)
 		fractdata->color = DEFAULT_COLOR;
 }
 
+/**
+ * color_shift - Applies a shift in the color to generate a different palette.
+ */
 void	color_shift(t_data *data)
 {
 	data->fractdata.color = data->fractdata.color - 256;

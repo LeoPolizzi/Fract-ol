@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 # Compiler and flags
-CC       = gcc
+CC       = cc
 CFLAGS   = -Wall -Wextra -Werror
 
 # Directories
@@ -35,7 +35,6 @@ SRCS     = $(SRC_DIR)/fractol.c \
            $(SRC_DIR)/render.c \
            $(SRC_DIR)/render_utils.c \
            $(SRC_DIR)/color.c \
-           $(SRC_DIR)/color_utils.c \
            $(SRC_DIR)/event_handling.c \
            $(SRC_DIR)/help_msg.c \
            $(SRC_DIR)/error_and_exit.c

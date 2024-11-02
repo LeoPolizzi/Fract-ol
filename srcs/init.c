@@ -12,6 +12,9 @@
 
 #include "fractol.h"
 
+/**
+ * init_palette - Creates a gradient of colors from a starting color.
+ */
 void	init_palette(t_fractdata *fractdata)
 {
 	int	i;
@@ -23,14 +26,18 @@ void	init_palette(t_fractdata *fractdata)
 	start_color = fractdata->color;
 	end_color = 0x000000;
 	color_step = (start_color - end_color) / (MAX_ITERATIONS + 1);
-	while (i <= (MAX_ITERATIONS - 1))
+	while (i < MAX_ITERATIONS)
 	{
 		fractdata->palette[i] = start_color - (i * color_step);
 		i++;
 	}
-	fractdata->palette[i] = end_color;
 }
 
+/**
+ * init_img - Initializes an image with the minilibx.
+ * 
+ * Also calls the init_palette function to get a gradient of colors.
+ */
 static void	init_img(t_data *data)
 {
 	int		pixel_bits;
@@ -51,6 +58,13 @@ static void	init_img(t_data *data)
 	data->imgdata.addr = buf;
 }
 
+/**
+ * get_starting_complex - Gets the starting values for each fractal set.
+ * 
+ * If set is not Julia or if there are only 2 args, use default values.
+ * If there are only 3 args for Julia, output help message.
+ * If incorrect values are passed in the args, output help message.
+ */
 void	get_starting_complex(t_data *data, int ac, char **av)
 {
 	t_fractdata	*fdata;
@@ -77,6 +91,9 @@ void	get_starting_complex(t_data *data, int ac, char **av)
 		help_msg(data);
 }
 
+/**
+ * get_complex_plane - Get the right complex plane for each fractal set.
+ */
 void	get_complex_plane(t_data *data)
 {
 	t_fractdata	*fdata;
@@ -100,6 +117,9 @@ void	get_complex_plane(t_data *data)
 	}
 }
 
+/**
+ * init - Initializes an MLX instance and calls other init functions.
+ */
 void	init(t_data *data)
 {
 	data->mlxdata.mlx = mlx_init();

@@ -6,12 +6,15 @@
 /*   By: lpolizzi <lpolizzi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 18:07:21 by lpolizzi          #+#    #+#             */
-/*   Updated: 2024/10/21 13:35:56 by lpolizzi         ###   ########.fr       */
+/*   Updated: 2024/10/24 12:09:37 by lpolizzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+/**
+ * clean_init - Initialize a t_data structure with empty values.
+ */
 void	clean_init(t_data *data)
 {
 	data->mlxdata.mlx = NULL;
@@ -24,24 +27,30 @@ void	clean_init(t_data *data)
 	data->fractdata.max_i = 0;
 	data->fractdata.c_real = 0;
 	data->fractdata.c_imaginary = 0;
-	data->fractdata.z_real = 0;
-	data->fractdata.z_imaginary = 0;
 	data->fractdata.type = -1;
 	data->fractdata.color = 0;
 	data->fractdata.palette = NULL;
 }
 
+/**
+ * ft_atod - Converts a string into a double
+ */
 double	ft_atod(char *str)
 {
 	int		i;
 	double	nb;
-	int		is_neg;
+	int		sign;
 	double	div;
 
 	nb = 0;
 	div = 0.1;
-	is_neg = 1;
-	i = skip_space_sign(str, &is_neg);
+	sign = 1;
+	i = 0;
+	if (str[i] == '-')
+	{
+		sign *= -1;
+		i++;
+	}
 	while (str[i] && ft_isdigit(str[i]) && str[i] != '.')
 	{
 		nb = (nb * 10.0) + (str[i] - '0');
@@ -57,5 +66,5 @@ double	ft_atod(char *str)
 	}
 	if (str[i] && !ft_isdigit(str[i]))
 		return (-42);
-	return (nb * is_neg);
+	return (nb * sign);
 }

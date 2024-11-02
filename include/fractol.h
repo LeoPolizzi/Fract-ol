@@ -23,14 +23,14 @@
 /**
  * Macros for default values.
  */
-# define WIN_SIZE_X 800
+# define WIN_SIZE_X 600
 # define WIN_SIZE_Y 600
 # define MAX_ITERATIONS 150
 # define MAX_C_VALUE 2
 # define MIN_C_VALUE -2
 # define DEFAULT_C_REAL -0.7
 # define DEFAULT_C_IMAGINARY 0.3
-# define DEFAULT_COLOR (int)0xFF421337
+# define DEFAULT_COLOR 0xFF421337
 # define MANDELBROT 0
 # define BURNING_SHIP 1
 # define JULIA 2
@@ -72,8 +72,6 @@ typedef struct s_imgdata
  *
  *		c_real: Real part of the coordinates in the complex plane.
  *		c_imaginary: Imaginary part of the coordinates in the complex plane.
- *		z_real: Real part of the iteration variable.
- *		z_imaginary: Imaginary part of the iteration variable.
  *		min_r: Minimal real value of the complex plane.
  *		max_r: Maximal real value of the complex plane.
  *		min_i: Minimal imaginary value of the complex plane.
@@ -86,8 +84,6 @@ typedef struct s_fractdata
 {
 	double		c_real;
 	double		c_imaginary;
-	double		z_real;
-	double		z_imaginary;
 	double		min_r;
 	double		max_r;
 	double		min_i;
@@ -120,27 +116,38 @@ typedef struct s_data
 	t_fractdata	fractdata;
 }				t_data;
 
+// Color functions
+
 void			get_color(t_data *data, int ac, char **av);
-int				ft_ishexdigit(int c);
-int				skip_space_sign_0x(char *color);
-double			ft_atod(char *str);
+void			color_shift(t_data *data);
+void			init_palette(t_fractdata *fractdata);
+
+// Event handling functions
+
 int				mouse_event(int keycode, int x, int y, t_data *data);
 int				key_event(int keycode, t_data *data);
+
+// Error/Exit handling and help message functions
+
 void			clean_exit(int exit_code, t_data *data);
 int				end_fractol(t_data *data);
-void			get_starting_complex(t_data *data, int ac, char **av);
-void			get_complex_plane(t_data *data);
-void			init(t_data *data);
-void			clean_init(t_data *data);
-void			render(t_data *data);
-void			set_pixel(t_data *data, int x, int y, int color);
 void			help_msg(t_data *data);
 int				msg(char *str1, char *str2, int errno);
 void			print_controls(void);
 void			print_color_options(void);
 void			print_fractal_options(void);
-int				skip_space_sign(char *str, int *is_neg);
-void			color_shift(t_data *data);
-void			init_palette(t_fractdata *fractdata);
+
+// Initialization functions
+
+void			clean_init(t_data *data);
+void			init(t_data *data);
+void			get_starting_complex(t_data *data, int ac, char **av);
+void			get_complex_plane(t_data *data);
+double			ft_atod(char *str);
+
+// Rendering functions
+
+void			render(t_data *data);
+void			set_pixel(t_data *data, int x, int y, int color);
 
 #endif
