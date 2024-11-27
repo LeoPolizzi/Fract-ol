@@ -53,7 +53,7 @@ void	print_color_options(void)
 	ft_putstr_fd("\e[36mUsage example:\t", 1);
 	ft_putendl_fd("./fractol J 0.285 0.01 424242\e[0m", 1);
 	ft_putendl_fd("+====================================================+\n",
-			   1);
+		1);
 }
 
 void	print_controls(void)
