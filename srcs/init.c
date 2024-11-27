@@ -19,23 +19,18 @@ void	init_palette(t_fractdata *fractdata)
 {
 	int	i;
 	int	start_color;
-	int	end_color;
 	int	color_step;
 
-	i = 0;
+	i = -1;
 	start_color = fractdata->color;
-	end_color = 0x000000;
-	color_step = (start_color - end_color) / (MAX_ITERATIONS + 1);
-	while (i < MAX_ITERATIONS)
-	{
+	color_step = (start_color - END_COLOR) / (MAX_ITERATIONS + 1);
+	while (++i < MAX_ITERATIONS)
 		fractdata->palette[i] = start_color - (i * color_step);
-		i++;
-	}
 }
 
 /**
  * init_img - Initializes an image with the minilibx.
- * 
+ *
  * Also calls the init_palette function to get a gradient of colors.
  */
 static void	init_img(t_data *data)
@@ -60,7 +55,7 @@ static void	init_img(t_data *data)
 
 /**
  * get_starting_complex - Gets the starting values for each fractal set.
- * 
+ *
  * If set is not Julia or if there are only 2 args, use default values.
  * If there are only 3 args for Julia, output help message.
  * If incorrect values are passed in the args, output help message.
@@ -77,13 +72,9 @@ void	get_starting_complex(t_data *data, int ac, char **av)
 		return ;
 	}
 	if (ac < 4)
-	{
 		help_msg(data);
-	}
 	if (!ft_strchr(av[2], '.') || !ft_strchr(av[3], '.'))
-	{
 		help_msg(data);
-	}
 	fdata->c_real = ft_atod(av[2]);
 	fdata->c_imaginary = ft_atod(av[3]);
 	if (fdata->c_real > 2.0 || fdata->c_real < -2.0 || fdata->c_imaginary > 2.0

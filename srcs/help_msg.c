@@ -52,6 +52,8 @@ void	print_color_options(void)
 	ft_putendl_fd("the starting values.", 1);
 	ft_putstr_fd("\e[36mUsage example:\t", 1);
 	ft_putendl_fd("./fractol J 0.285 0.01 424242\e[0m", 1);
+	ft_putendl_fd("+====================================================+\n",
+			   1);
 }
 
 void	print_controls(void)
@@ -60,7 +62,7 @@ void	print_controls(void)
 		1);
 	ft_putendl_fd("WASD or arrow keys\t\tmove view.", 1);
 	ft_putendl_fd("Space bar\t\t\tchange colors.", 1);
-	ft_putendl_fd("+/- keys or scroll wheel\tzoom in and out.", 1);
+	ft_putendl_fd("Scroll wheel\tzoom in and out.", 1);
 	ft_putendl_fd("ESC or close window\t\tquit fract'ol.", 1);
 	ft_putendl_fd("+====================================================+\n",
 		1);

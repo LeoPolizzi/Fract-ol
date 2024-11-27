@@ -20,26 +20,26 @@
  * @return    The number of iterations before the point escapes the Mandelbrot
  * set or reaches MAX_ITERATIONS.
  */
-static int mandelbrot(double pr, double pi)
+static int	mandelbrot(double pr, double pi)
 {
-    int     n;
-    double  zr;
-    double  zi;
-    double  tmp;
+	int		n;
+	double	zr;
+	double	zi;
+	double	tmp;
 
-    n = 0;
-    zr = 0;
-    zi = 0;
-    while (n < MAX_ITERATIONS)
-    {
-        if ((zi * zi + zr * zr) > 4.0)
-            break;
-        tmp = 2 * zr * zi + pi;
-        zr = zr * zr - zi * zi + pr;
-        zi = tmp;
-        n++;
-    }
-    return (n);
+	n = 0;
+	zr = 0;
+	zi = 0;
+	while (n < MAX_ITERATIONS)
+	{
+		if ((zi * zi + zr * zr) > 4.0)
+			break ;
+		tmp = 2 * zr * zi + pi;
+		zr = zr * zr - zi * zi + pr;
+		zi = tmp;
+		n++;
+	}
+	return (n);
 }
 
 /**
@@ -53,26 +53,26 @@ static int mandelbrot(double pr, double pi)
  * @return           The number of iterations before the point escapes the
  * Julia set or reaches MAX_ITERATIONS.
  */
-static int julia(t_fractdata *fractdata, double zr, double zi)
+static int	julia(t_fractdata *fractdata, double zr, double zi)
 {
-    int     n;
-    double  tmp;
-    double c_imaginary;
-    double c_real;
+	int		n;
+	double	tmp;
+	double	c_imaginary;
+	double	c_real;
 
-    c_imaginary = fractdata->c_imaginary;
-    c_real = fractdata->c_real;
-    n = 0;
-    while (n < MAX_ITERATIONS)
-    {
-        if ((zi * zi + zr * zr) > 4.0)
-            break;
-        tmp = 2 * zr * zi + c_imaginary;
-        zr = zr * zr - zi * zi + c_real;
-        zi = tmp;
-        n++;
-    }
-    return (n);
+	c_imaginary = fractdata->c_imaginary;
+	c_real = fractdata->c_real;
+	n = 0;
+	while (n < MAX_ITERATIONS)
+	{
+		if ((zi * zi + zr * zr) > 4.0)
+			break ;
+		tmp = 2 * zr * zi + c_imaginary;
+		zr = zr * zr - zi * zi + c_real;
+		zi = tmp;
+		n++;
+	}
+	return (n);
 }
 
 /**
@@ -83,43 +83,45 @@ static int julia(t_fractdata *fractdata, double zr, double zi)
  * @return    The number of iterations before the point escapes the Burning
  * Ship fractal or reaches MAX_ITERATIONS.
  */
-static int burning_ship(double cr, double ci)
+static int	burning_ship(double cr, double ci)
 {
-    int     n;
-    double  zr;
-    double  zi;
-    double  tmp;
+	int		n;
+	double	zr;
+	double	zi;
+	double	tmp;
 
-    zr = 0;
-    zi = 0;
-    n = 0;
-    while (n < MAX_ITERATIONS)
-    {
-        if ((zr * zr + zi * zi) > 4.0)
-            break;
-        zr = fabs(zr);
-        zi = fabs(zi);
-        tmp = 2 * zr * zi + ci;
-        zr = zr * zr - zi * zi + cr;
-        zi = tmp;
-        n++;
-    }
-    return (n);
+	zr = 0;
+	zi = 0;
+	n = 0;
+	while (n < MAX_ITERATIONS)
+	{
+		if ((zr * zr + zi * zi) > 4.0)
+			break ;
+		zr = fabs(zr);
+		zi = fabs(zi);
+		tmp = 2 * zr * zi + ci;
+		zr = zr * zr - zi * zi + cr;
+		zi = tmp;
+		n++;
+	}
+	return (n);
 }
 
 /**
  * Determines which fractal to calculate.
- * 
+ *
  * @param fractdata A pointer to a structure containing values to calculate
  * each fractal.
  * @param pr Real par of the current pixels position in the complex plane.
  * @param pi Imaginary par of the current pixels position in the complex plane.
  * @return The number of iterations it took to reach zr^2 + zi^2 > 4.0.
  */
-static int	calculate_which_fractal(t_fractdata *fractdata, double pr, double pi)
+static int	calculate_which_fractal(t_fractdata *fractdata, double pr,
+		double pi)
 {
 	int	nb_iter;
 
+	nb_iter = 0;
 	if (fractdata->type == MANDELBROT)
 		nb_iter = mandelbrot(pr, pi);
 	else if (fractdata->type == JULIA)
@@ -129,15 +131,13 @@ static int	calculate_which_fractal(t_fractdata *fractdata, double pr, double pi)
 	return (nb_iter);
 }
 
-#include <time.h>
-
 /**
  * Chooses a color for each pixel in the frame and renders them.
- * 
+ *
  * Calculates if a pixel is in the desired fractal set and based on the
  * number of iterations needed to reach zr^2 + zi^2 > 4.0,
  * determines a color for each pixel using the palette.
- * 
+ *
  * @param data A pointer to a data structure.
  */
 void	render(t_data *data)

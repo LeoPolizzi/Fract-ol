@@ -31,11 +31,13 @@
 # define DEFAULT_C_REAL -0.7
 # define DEFAULT_C_IMAGINARY 0.3
 # define DEFAULT_COLOR 0xFF421337
+# define END_COLOR 0x000000
 # define MANDELBROT 0
 # define BURNING_SHIP 1
 # define JULIA 2
 # define COLOR_ERROR 1
 # define FRACTAL_TYPE_ERROR 2
+# define DEFAULT_COLOR_SHIFT 512
 
 /**
  * t_mlxdata - Structure holding MLX instance data.

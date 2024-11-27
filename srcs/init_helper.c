@@ -46,23 +46,16 @@ double	ft_atod(char *str)
 	div = 0.1;
 	sign = 1;
 	i = 0;
-	if (str[i] == '-')
-	{
+	if (str[i++] == '-')
 		sign *= -1;
-		i++;
-	}
 	while (str[i] && ft_isdigit(str[i]) && str[i] != '.')
-	{
-		nb = (nb * 10.0) + (str[i] - '0');
-		i++;
-	}
+		nb = (nb * 10.0) + (str[i++] - '0');
 	if (str[i] == '.')
 		i++;
 	while (str[i] && ft_isdigit(str[i]))
 	{
-		nb = nb + ((str[i] - '0') * div);
+		nb = nb + ((str[i++] - '0') * div);
 		div *= 0.1;
-		i++;
 	}
 	if (str[i] && !ft_isdigit(str[i]))
 		return (-42);

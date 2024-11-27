@@ -18,7 +18,7 @@ CFLAGS   = -Wall -Wextra -Werror
 SRC_DIR  = srcs
 OBJ_DIR  = objs
 LIBFT_DIR = libft
-MLX_DIR  = minilibx-linux
+MLX_DIR  = .minilibx-linux
 
 # Libraries
 LIBFT    = $(LIBFT_DIR)/libft.a

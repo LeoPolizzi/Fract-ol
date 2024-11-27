@@ -39,7 +39,7 @@ static void	zoom(t_data *data, const double zoom_factor, const double mouse_x,
 
 /**
  * move - Moves the rendering view.
- * 
+ *
  * 	Direction depends on input data.
  */
 static void	move(t_data *data, const double distance, const char direction)
@@ -73,7 +73,7 @@ static void	move(t_data *data, const double distance, const char direction)
 
 /**
  * mouse_event - Function registered as a mouse hook.
- * 
+ *
  * 	Calls the function "zoom" if key Plus/Minus is pressed or
  * 	if Scroll Up/Down. Values passed to the function depends
  * 	if you zoom in/out.
@@ -81,16 +81,16 @@ static void	move(t_data *data, const double distance, const char direction)
  * @param x X coordinates of the mouse cursor.
  * @param y Y coordinates of the mouse cursor.
  * @param data Pointer to a data structure.
- * 
+ *
  * @return Returns 0.
  */
 int	mouse_event(int keycode, int x, int y, t_data *data)
 {
-	if (keycode == MOUSE_WHEEL_UP || keycode == KEY_MINUS)
+	if (keycode == MOUSE_WHEEL_UP)
 	{
 		zoom(data, 0.9, x, y);
 	}
-	else if (keycode == MOUSE_WHEEL_DOWN || keycode == KEY_PLUS)
+	else if (keycode == MOUSE_WHEEL_DOWN)
 	{
 		zoom(data, 1.1, x, y);
 	}
@@ -100,15 +100,15 @@ int	mouse_event(int keycode, int x, int y, t_data *data)
 
 /**
  * key_event - Function registered as a key hook.
- * 
+ *
  * Calls function "end_fractol" in case of an input of Escape.
  * Calls function "move" in case of an input of WASD/Up,Down,Right,Left.
  * Calls function "color_shift" in case of an input of SpaceBar.
  * Re-renders the frame after the function call.
- * 
+ *
  * @param keycode Input sent by key hook.
  * @param data Pointer to data structure.
- * 
+ *
  * @return Returns 0.
  */
 int	key_event(int keycode, t_data *data)

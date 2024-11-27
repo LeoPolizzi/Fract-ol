@@ -18,10 +18,10 @@
 static int	ft_ishexdigit(int c)
 {
 	if (c >= '0' && c <= '9')
-		return (c);
+		return (1);
 	c = ft_toupper(c);
 	if (c >= 'A' && c <= 'F')
-		return (c);
+		return (1);
 	else
 		return (0);
 }
@@ -35,14 +35,13 @@ static int	ft_atox_color(t_data *data, char *color)
 	int	ret;
 
 	ret = 0;
-	i = 0;
-	while (color[i] && ft_ishexdigit(color[i]))
+	i = -1;
+	while (color[++i] && ft_ishexdigit(color[i]))
 	{
 		if (ft_isdigit(color[i]))
 			ret = (ret * 16) + (color[i] - '0');
 		else
 			ret = (ret * 16) + (ft_toupper(color[i]) - 'A' + 10);
-		i++;
 	}
 	if (i == 6 && !color[i])
 		return (ret);
@@ -54,7 +53,7 @@ static int	ft_atox_color(t_data *data, char *color)
 /*
  * get_color - Gets a color from the args passed from the main.
  *
- * 		Defaults to "DEFAULT_COLOR" if the color isn't valid. 
+ * 		Defaults to "DEFAULT_COLOR" if the color isn't valid.
  */
 void	get_color(t_data *data, int ac, char **av)
 {
@@ -87,6 +86,6 @@ void	get_color(t_data *data, int ac, char **av)
  */
 void	color_shift(t_data *data)
 {
-	data->fractdata.color = data->fractdata.color - 256;
+	data->fractdata.color = data->fractdata.color - DEFAULT_COLOR_SHIFT;
 	init_palette(&data->fractdata);
 }
