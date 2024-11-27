@@ -14,6 +14,9 @@
 
 /**
  * ft_ishexdigit - Check if a char is an hex digit (0123456789abcdef).
+ * @param c  The char to check.
+ *
+ * @return 1 if the char is an hex digit, 0 otherwise.
  */
 static int	ft_ishexdigit(int c)
 {
@@ -27,9 +30,13 @@ static int	ft_ishexdigit(int c)
 }
 
 /**
- * ft_atox_color - Converts a string to an hex representation of an int.
+ * ft_atox_color - Converts a string containing an hex
+ * representation of an int into an int.
+ * @param color  The string to convert.
+ *
+ * @return The int representation of the string.
  */
-static int	ft_atox_color(t_data *data, char *color)
+static int	ft_atox_color(char *color)
 {
 	int	i;
 	int	ret;
@@ -63,7 +70,7 @@ void	get_color(t_data *data, int ac, char **av)
 	fractdata = &data->fractdata;
 	if (fractdata->type == JULIA && ac == 5)
 	{
-		color = ft_atox_color(data, av[4]);
+		color = ft_atox_color(av[4]);
 		if (color != -1)
 			fractdata->color = color;
 		else
@@ -71,7 +78,7 @@ void	get_color(t_data *data, int ac, char **av)
 	}
 	else if (fractdata->type != JULIA && ac == 3)
 	{
-		color = ft_atox_color(data, av[2]);
+		color = ft_atox_color(av[2]);
 		if (color != -1)
 			fractdata->color = color;
 		else
