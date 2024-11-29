@@ -12,7 +12,7 @@
 
 # Compiler and flags
 CC       = cc
-CFLAGS   = -Wall -Wextra -Werror
+CFLAGS   = -Wall -Wextra -Werror -O3 -g3 -fsanitize=address,leak,undefined -flto -march=native -ffast-math -fno-builtin -fno-common -fno-strict-aliasing -fno-stack-protector -fno-omit-frame-pointer -fno-optimize-sibling-calls
 
 # Directories
 SRC_DIR  = srcs
