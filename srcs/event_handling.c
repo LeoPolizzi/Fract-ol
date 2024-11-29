@@ -15,13 +15,13 @@
 /**
  * zoom - Zooms in or out of the fractal depending on the input data.
  */
-static void	zoom(t_data *data, const double zoom_factor, const double mouse_x,
-		const double mouse_y)
+static void	zoom(t_data *data, const float zoom_factor, const float mouse_x,
+		const float mouse_y)
 {
-	double	center_r;
-	double	center_i;
-	double	offset_r;
-	double	offset_i;
+	float	center_r;
+	float	center_i;
+	float	offset_r;
+	float	offset_i;
 
 	center_r = data->fractdata.max_r - data->fractdata.min_r;
 	center_i = data->fractdata.max_i - data->fractdata.min_i;
@@ -42,10 +42,10 @@ static void	zoom(t_data *data, const double zoom_factor, const double mouse_x,
  *
  * 	Direction depends on input data.
  */
-static void	move(t_data *data, const double distance, const char direction)
+static void	move(t_data *data, const float distance, const char direction)
 {
-	double	center_r;
-	double	center_i;
+	float	center_r;
+	float	center_i;
 
 	center_r = data->fractdata.max_r - data->fractdata.min_r;
 	center_i = data->fractdata.max_i - data->fractdata.min_i;
@@ -98,6 +98,14 @@ int	mouse_event(int keycode, int x, int y, t_data *data)
 	return (0);
 }
 
+void change_iterations(t_data *data, int iterations)
+{
+	data->fractdata.max_iterations += iterations;
+	if (data->fractdata.max_iterations < 0 || data->fractdata.max_iterations > 1000)
+		data->fractdata.max_iterations = MAX_ITERATIONS;
+	init_palette(data);
+}
+
 /**
  * key_event - Function registered as a key hook.
  *
@@ -113,24 +121,22 @@ int	mouse_event(int keycode, int x, int y, t_data *data)
  */
 int	key_event(int keycode, t_data *data)
 {
-	double	move_speed;
-
-	move_speed = 0.025;
 	if (keycode == KEY_ESC)
-	{
 		end_fractol(data);
-		return (0);
-	}
 	else if (keycode == KEY_UP || keycode == KEY_W)
-		move(data, move_speed, 'U');
+		move(data, 0.025, 'U');
 	else if (keycode == KEY_DOWN || keycode == KEY_S)
-		move(data, move_speed, 'D');
+		move(data, 0.025, 'D');
 	else if (keycode == KEY_LEFT || keycode == KEY_A)
-		move(data, move_speed, 'L');
+		move(data, 0.025, 'L');
 	else if (keycode == KEY_RIGHT || keycode == KEY_D)
-		move(data, move_speed, 'R');
+		move(data, 0.025, 'R');
 	else if (keycode == KEY_SPC)
 		color_shift(data);
+	else if (keycode == KEY_SHIFT)
+		change_iterations(data, 10);
+	else if (keycode == KEY_CTRL)
+		change_iterations(data, -10);
 	render(data);
 	return (0);
 }

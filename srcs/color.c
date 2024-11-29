@@ -95,5 +95,5 @@ void	get_color(t_data *data, int ac, char **av)
 void	color_shift(t_data *data)
 {
 	data->fractdata.color = data->fractdata.color - DEFAULT_COLOR_SHIFT;
-	init_palette(&data->fractdata);
+	init_palette(data);
 }

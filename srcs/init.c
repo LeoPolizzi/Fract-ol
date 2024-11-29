@@ -15,17 +15,25 @@
 /**
  * init_palette - Creates a gradient of colors from a starting color.
  */
-void	init_palette(t_fractdata *fractdata)
+void	init_palette(t_data *data)
 {
 	int	i;
 	int	start_color;
 	int	color_step;
 
 	i = -1;
-	start_color = fractdata->color;
-	color_step = (start_color - END_COLOR) / (MAX_ITERATIONS + 1);
-	while (++i < MAX_ITERATIONS)
-		fractdata->palette[i] = start_color - (i * color_step);
+	if (data->fractdata.palette)
+	{
+		free(data->fractdata.palette);
+		data->fractdata.palette = NULL;
+	}
+	data->fractdata.palette = ft_calloc((data->fractdata.max_iterations), sizeof(int));
+	if (!data->fractdata.palette)
+		clean_exit(msg("Color: ", "Error creating a color palette.", 1), data);
+	start_color = data->fractdata.color;
+	color_step = (start_color - END_COLOR) / (data->fractdata.max_iterations);
+	while (++i < data->fractdata.max_iterations)
+		data->fractdata.palette[i] = start_color - (i * color_step);
 }
 
 /**
@@ -40,10 +48,7 @@ static void	init_img(t_data *data)
 	int		endian;
 	char	*buf;
 
-	data->fractdata.palette = ft_calloc((MAX_ITERATIONS + 1), sizeof(int));
-	if (!(data->fractdata.palette))
-		clean_exit(msg("Color: ", "Error creating a color palette.", 1), data);
-	init_palette(&data->fractdata);
+	init_palette(data);
 	data->imgdata.img = mlx_new_image(data->mlxdata.mlx, WIN_SIZE_X,
 			WIN_SIZE_Y);
 	if (!(data->imgdata.img))

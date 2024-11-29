@@ -20,12 +20,12 @@
  * @return    The number of iterations before the point escapes the Mandelbrot
  * set or reaches MAX_ITERATIONS.
  */
-static int	mandelbrot(double pr, double pi)
+static int	mandelbrot(float pr, float pi)
 {
 	int		n;
-	double	zr;
-	double	zi;
-	double	tmp;
+	float	zr;
+	float	zi;
+	float	tmp;
 
 	n = 0;
 	zr = 0;
@@ -53,12 +53,12 @@ static int	mandelbrot(double pr, double pi)
  * @return           The number of iterations before the point escapes the
  * Julia set or reaches MAX_ITERATIONS.
  */
-static int	julia(t_fractdata *fractdata, double zr, double zi)
+static int	julia(t_fractdata *fractdata, float zr, float zi)
 {
 	int		n;
-	double	tmp;
-	double	c_imaginary;
-	double	c_real;
+	float	tmp;
+	float	c_imaginary;
+	float	c_real;
 
 	c_imaginary = fractdata->c_imaginary;
 	c_real = fractdata->c_real;
@@ -83,12 +83,12 @@ static int	julia(t_fractdata *fractdata, double zr, double zi)
  * @return    The number of iterations before the point escapes the Burning
  * Ship fractal or reaches MAX_ITERATIONS.
  */
-static int	burning_ship(double cr, double ci)
+static int	burning_ship(float cr, float ci)
 {
 	int		n;
-	double	zr;
-	double	zi;
-	double	tmp;
+	float	zr;
+	float	zi;
+	float	tmp;
 
 	zr = 0;
 	zi = 0;
@@ -116,8 +116,8 @@ static int	burning_ship(double cr, double ci)
  * @param pi Imaginary par of the current pixels position in the complex plane.
  * @return The number of iterations it took to reach zr^2 + zi^2 > 4.0.
  */
-static int	calculate_which_fractal(t_fractdata *fractdata, double pr,
-		double pi)
+static int	calculate_which_fractal(t_fractdata *fractdata, float pr,
+		float pi)
 {
 	int	nb_iter;
 
@@ -144,8 +144,8 @@ void	render(t_data *data)
 {
 	int		x;
 	int		y;
-	double	pr;
-	double	pi;
+	float	pr;
+	float	pi;
 	int		nb_iter;
 
 	mlx_clear_window(data->mlxdata.mlx, data->mlxdata.mlx_win);
@@ -155,9 +155,9 @@ void	render(t_data *data)
 		x = -1;
 		while (++x < WIN_SIZE_X)
 		{
-			pr = data->fractdata.min_r + (double)x * (data->fractdata.max_r
+			pr = data->fractdata.min_r + (float)x * (data->fractdata.max_r
 					- data->fractdata.min_r) / WIN_SIZE_X;
-			pi = data->fractdata.max_i + (double)y * (data->fractdata.min_i
+			pi = data->fractdata.max_i + (float)y * (data->fractdata.min_i
 					- data->fractdata.max_i) / WIN_SIZE_Y;
 			nb_iter = calculate_which_fractal(&data->fractdata, pr, pi);
 			set_pixel(data, x, y, data->fractdata.palette[nb_iter]);
