@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 COMP = cc
-CFLAGS = -Wall -Wextra -Werror -I ./
+CFLAGS = -Wall -Wextra -Werror -O3 -g3 -fsanitize=address,leak,undefined -flto -march=native -ffast-math -fno-strict-aliasing -I ./
 NAME = libft.a
 
 ADDI =  ft_strjoin.c			ft_substr.c					ft_strtrim.c			ft_split.c			\
