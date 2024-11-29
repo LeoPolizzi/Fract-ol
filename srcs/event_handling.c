@@ -15,13 +15,13 @@
 /**
  * zoom - Zooms in or out of the fractal depending on the input data.
  */
-static void	zoom(t_data *data, const double zoom_factor, const double mouse_x,
-		const double mouse_y)
+static void	zoom(t_data *data, const float zoom_factor, const float mouse_x,
+		const float mouse_y)
 {
-	double	center_r;
-	double	center_i;
-	double	offset_r;
-	double	offset_i;
+	float	center_r;
+	float	center_i;
+	float	offset_r;
+	float	offset_i;
 
 	center_r = data->fractdata.max_r - data->fractdata.min_r;
 	center_i = data->fractdata.max_i - data->fractdata.min_i;
@@ -42,10 +42,10 @@ static void	zoom(t_data *data, const double zoom_factor, const double mouse_x,
  *
  * 	Direction depends on input data.
  */
-static void	move(t_data *data, const double distance, const char direction)
+static void	move(t_data *data, const float distance, const char direction)
 {
-	double	center_r;
-	double	center_i;
+	float	center_r;
+	float	center_i;
 
 	center_r = data->fractdata.max_r - data->fractdata.min_r;
 	center_i = data->fractdata.max_i - data->fractdata.min_i;
@@ -113,7 +113,7 @@ int	mouse_event(int keycode, int x, int y, t_data *data)
  */
 int	key_event(int keycode, t_data *data)
 {
-	double	move_speed;
+	float	move_speed;
 
 	move_speed = 0.025;
 	if (keycode == KEY_ESC)

@@ -84,12 +84,12 @@ typedef struct s_imgdata
  */
 typedef struct s_fractdata
 {
-	double		c_real;
-	double		c_imaginary;
-	double		min_r;
-	double		max_r;
-	double		min_i;
-	double		max_i;
+	float		c_real;
+	float		c_imaginary;
+	float		min_r;
+	float		max_r;
+	float		min_i;
+	float		max_i;
 	int			type;
 	int			color;
 	int			*palette;
@@ -145,7 +145,7 @@ void			clean_init(t_data *data);
 void			init(t_data *data);
 void			get_starting_complex(t_data *data, int ac, char **av);
 void			get_complex_plane(t_data *data);
-double			ft_atod(char *str);
+float			ft_atod(char *str);
 
 // Rendering functions
 

@@ -33,14 +33,14 @@ void	clean_init(t_data *data)
 }
 
 /**
- * ft_atod - Converts a string into a double
+ * ft_atod - Converts a string into a float
  */
-double	ft_atod(char *str)
+float	ft_atod(char *str)
 {
 	int		i;
-	double	nb;
+	float	nb;
 	int		sign;
-	double	div;
+	float	div;
 
 	nb = 0;
 	div = 0.1;
