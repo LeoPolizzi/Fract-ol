@@ -80,3 +80,12 @@ void	get_color(t_data *data, int ac, char **av)
 	if (ac == 2 || (fractdata->type == JULIA && ac == 4))
 		fractdata->color = DEFAULT_COLOR;
 }
+
+/**
+ * color_shift - Applies a shift in the color to generate a different palette.
+ */
+void	color_shift(t_data *data)
+{
+	data->fractdata.color = data->fractdata.color - DEFAULT_COLOR_SHIFT;
+	init_palette(&data->fractdata);
+}

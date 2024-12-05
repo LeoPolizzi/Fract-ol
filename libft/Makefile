@@ -38,19 +38,19 @@ OBJS_BONUS = ${SRCS_BONUS:.c=.o}
 all: ${NAME}
 
 ${NAME}: ${OBJS}
-						ar rcs ${NAME} ${OBJS}
+						@ar rcs ${NAME} ${OBJS}
 
 bonus: ${OBJS_BONUS}
-						ar rcs ${NAME} ${OBJS_BONUS}
+						@ar rcs ${NAME} ${OBJS_BONUS}
 
 .c.o:
-						${COMP} ${CFLAGS} -c $< -o $@
+						@${COMP} ${CFLAGS} -c $< -o $@
 
 clean:
-						rm -rf ${OBJS} ${OBJS_BONUS}
+						@rm -rf ${OBJS} ${OBJS_BONUS}
 
 fclean: clean
-						rm -rf ${NAME}
+						@rm -rf ${NAME}
 
 re: fclean all
 

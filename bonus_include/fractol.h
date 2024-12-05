@@ -121,6 +121,7 @@ typedef struct s_data
 // Color functions
 
 void			get_color(t_data *data, int ac, char **av);
+void			color_shift(t_data *data);
 void			init_palette(t_fractdata *fractdata);
 
 // Event handling functions

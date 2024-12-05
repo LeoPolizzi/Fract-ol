@@ -76,6 +76,38 @@ static int	julia(t_fractdata *fractdata, double zr, double zi)
 }
 
 /**
+ * Computes the Burning Ship fractal iteration for a given point.
+ *
+ * @param cr  The real part of the point in the complex plane.
+ * @param ci  The imaginary part of the point in the complex plane.
+ * @return    The number of iterations before the point escapes the Burning
+ * Ship fractal or reaches MAX_ITERATIONS.
+ */
+static int	burning_ship(double cr, double ci)
+{
+	int		n;
+	double	zr;
+	double	zi;
+	double	tmp;
+
+	zr = 0;
+	zi = 0;
+	n = 0;
+	while (n < MAX_ITERATIONS)
+	{
+		if ((zr * zr + zi * zi) > 4.0)
+			break ;
+		zr = fabs(zr);
+		zi = fabs(zi);
+		tmp = 2 * zr * zi + ci;
+		zr = zr * zr - zi * zi + cr;
+		zi = tmp;
+		n++;
+	}
+	return (n);
+}
+
+/**
  * Determines which fractal to calculate.
  *
  * @param fractdata A pointer to a structure containing values to calculate
@@ -94,6 +126,8 @@ static int	calculate_which_fractal(t_fractdata *fractdata, double pr,
 		nb_iter = mandelbrot(pr, pi);
 	else if (fractdata->type == JULIA)
 		nb_iter = julia(fractdata, pr, pi);
+	else if (fractdata->type == BURNING_SHIP)
+		nb_iter = burning_ship(pr, pi);
 	return (nb_iter);
 }
 

@@ -24,6 +24,8 @@ static void	get_type(t_data *data, char **av)
 		data->fractdata.type = MANDELBROT;
 	else if ((first == 'j' || first == 'J') && ft_strlen(av[1]) == 1)
 		data->fractdata.type = JULIA;
+	else if ((first == 'b' || first == 'B') && ft_strlen(av[1]) == 1)
+		data->fractdata.type = BURNING_SHIP;
 	else
 		help_msg(data);
 }
