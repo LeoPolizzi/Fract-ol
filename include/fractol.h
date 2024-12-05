@@ -6,7 +6,7 @@
 /*   By: lpolizzi <lpolizzi@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 12:40:47 by lpolizzi          #+#    #+#             */
-/*   Updated: 2024/10/19 16:24:41 by lpolizzi         ###   ########.fr       */
+/*   Updated: 2024/11/28 16:20:13 by lpolizzi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,5 @@ double			ft_atod(char *str);
 // Rendering functions
 
 void			render(t_data *data);
-void			set_pixel(t_data *data, int x, int y, int color);
 
 #endif

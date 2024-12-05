@@ -160,7 +160,8 @@ void	render(t_data *data)
 			pi = data->fractdata.max_i + (double)y * (data->fractdata.min_i
 					- data->fractdata.max_i) / WIN_SIZE_Y;
 			nb_iter = calculate_which_fractal(&data->fractdata, pr, pi);
-			set_pixel(data, x, y, data->fractdata.palette[nb_iter]);
+			((int *)data->imgdata.addr)[y * WIN_SIZE_X
+				+ x] = data->fractdata.palette[nb_iter];
 		}
 	}
 	mlx_put_image_to_window(data->mlxdata.mlx, data->mlxdata.mlx_win,
