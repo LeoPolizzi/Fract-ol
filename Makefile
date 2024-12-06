@@ -103,4 +103,6 @@ fclean: clean
 # Rebuild
 re: fclean all
 
+rebonus: fclean bonus
+
 .PHONY: all clean fclean re

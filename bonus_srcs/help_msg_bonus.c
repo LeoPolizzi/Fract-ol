@@ -19,13 +19,13 @@ void	print_fractal_options(void)
 	ft_putendl_fd("\tM - Mandelbrot", 1);
 	ft_putendl_fd("\tJ - Julia", 1);
 	ft_putendl_fd("\tB - Burning Ship", 1);
-	ft_putendl_fd("\e[36mUsage example:\t./fractol <type>", 1);
-	ft_putendl_fd("\t\t./fractol M\e[0m", 1);
+	ft_putendl_fd("\e[36mUsage example:\t./fractol_bonus <type>", 1);
+	ft_putendl_fd("\t\t./fractol_bonus M\e[0m", 1);
 	ft_putstr_fd("\nFor Julia, you may specify starting values for the\n", 1);
 	ft_putstr_fd("initial fractal shape. Values must be between\n", 1);
 	ft_putendl_fd("-2.0 and 2.0 and must contain a decimal point.", 1);
-	ft_putendl_fd("\e[36mUsage example:\t./fractol J", 1);
-	ft_putendl_fd("\t\t./fractol J 0.285 0.01\e[0m", 1);
+	ft_putendl_fd("\e[36mUsage example:\t./fractol_bonus J", 1);
+	ft_putendl_fd("\t\t./fractol_bonus J 0.285 0.01\e[0m", 1);
 }
 
 void	print_color_options(void)
@@ -46,12 +46,12 @@ void	print_color_options(void)
 	ft_putstr_fd("\e[38;2;255;51;153m\tPink:\tFF3399", 1);
 	ft_putendl_fd("\t\e[38;2;0;255;128mTurquoise: 00FF80\e[0m", 1);
 	ft_putstr_fd("\e[36mUsage example:\t", 1);
-	ft_putendl_fd("./fractol <type> <color>", 1);
-	ft_putendl_fd("\t\t./fractol M 133742\e[0m", 1);
+	ft_putendl_fd("./fractol_bonus <type> <color>", 1);
+	ft_putendl_fd("\t\t./fractol_bonus M 133742\e[0m", 1);
 	ft_putendl_fd("\nFor Julia, you can only specify colors after", 1);
 	ft_putendl_fd("the starting values.", 1);
 	ft_putstr_fd("\e[36mUsage example:\t", 1);
-	ft_putendl_fd("./fractol J 0.285 0.01 424242\e[0m", 1);
+	ft_putendl_fd("./fractol_bonus J 0.285 0.01 424242\e[0m", 1);
 	ft_putendl_fd("+====================================================+\n",
 		1);
 }
