@@ -92,15 +92,11 @@ $(BONUS_NAME): $(BONUS_OBJS) $(LIBFT) $(MLX)
 
 # Clean object files
 clean:
-	@$(MAKE) -C $(LIBFT_DIR) clean > /dev/null
-	@$(MAKE) -C $(MLX_DIR) clean > /dev/null
 	@rm -rf $(OBJ_DIR)
 	@echo "Clean done."
 
 # Clean object files and executable
 fclean: clean
-	@$(MAKE) -C $(LIBFT_DIR) fclean > /dev/null
-	@$(MAKE) -C $(MLX_DIR) clean > /dev/null
 	@rm -f $(NAME) $(BONUS_NAME)
 	@echo "Full clean done."
 

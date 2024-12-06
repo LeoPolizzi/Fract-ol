@@ -13,7 +13,7 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include "keymap.h"
+# include "keymap_bonus.h"
 # include "libft.h"
 # include "mlx.h"
 # include <math.h>

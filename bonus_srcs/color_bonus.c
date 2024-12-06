@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "fractol_bonus.h"
 
 /**
  * ft_ishexdigit - Check if a char is an hex digit (0123456789abcdef).
