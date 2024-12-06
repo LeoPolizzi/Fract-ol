@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef KEYMAP_H
-# define KEYMAP_H
+#ifndef KEYMAP_BONUS_H
+# define KEYMAP_BONUS_H
 
 # define CLOSE_BTN 17
 # define KEY_ESC 65307
