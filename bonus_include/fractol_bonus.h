@@ -17,15 +17,16 @@
 # include "libft.h"
 # include "mlx.h"
 # include <math.h>
+# include <pthread.h>
 # include <stdio.h>
 # include <stdlib.h>
 
 /**
  * Macros for default values.
  */
-# define WIN_SIZE_X 600
-# define WIN_SIZE_Y 600
-# define MAX_ITERATIONS 150
+# define WIN_SIZE_X 900
+# define WIN_SIZE_Y 900
+# define MAX_ITERATIONS 300
 # define MAX_C_VALUE 2
 # define MIN_C_VALUE -2
 # define DEFAULT_C_REAL -0.7
@@ -39,6 +40,15 @@
 # define FRACTAL_TYPE_ERROR 2
 # define DEFAULT_COLOR_SHIFT 512
 
+# define NUM_THREADS 12
+
+typedef struct s_thread_data
+{
+	struct s_data	*data;
+	int				start_y;
+	int				end_y;
+}					t_thread_data;
+
 /**
  * t_mlxdata - Structure holding MLX instance data.
  *
@@ -47,9 +57,9 @@
  */
 typedef struct s_mlxdata
 {
-	void		*mlx;
-	void		*mlx_win;
-}				t_mlxdata;
+	void			*mlx;
+	void			*mlx_win;
+}					t_mlxdata;
 
 /**
  * t_imgdata - Structure holding image data.
@@ -62,12 +72,12 @@ typedef struct s_mlxdata
  */
 typedef struct s_imgdata
 {
-	void		*img;
-	char		*addr;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-}				t_imgdata;
+	void			*img;
+	char			*addr;
+	int				bits_per_pixel;
+	int				line_length;
+	int				endian;
+}					t_imgdata;
 
 /**
  * t_fractdata - Structure holding data for the calculation of a fractal.
@@ -84,16 +94,16 @@ typedef struct s_imgdata
  */
 typedef struct s_fractdata
 {
-	double		c_real;
-	double		c_imaginary;
-	double		min_r;
-	double		max_r;
-	double		min_i;
-	double		max_i;
-	int			type;
-	int			color;
-	int			*palette;
-}				t_fractdata;
+	double			c_real;
+	double			c_imaginary;
+	double			min_r;
+	double			max_r;
+	double			min_i;
+	double			max_i;
+	int				type;
+	int				color;
+	int				*palette;
+}					t_fractdata;
 
 /**
  * t_data - Main data structure for the application.
@@ -113,42 +123,42 @@ typedef struct s_fractdata
  */
 typedef struct s_data
 {
-	t_mlxdata	mlxdata;
-	t_imgdata	imgdata;
-	t_fractdata	fractdata;
-}				t_data;
+	t_mlxdata		mlxdata;
+	t_imgdata		imgdata;
+	t_fractdata		fractdata;
+}					t_data;
 
 // Color functions
 
-void			get_color(t_data *data, int ac, char **av);
-void			color_shift(t_data *data);
-void			init_palette(t_fractdata *fractdata);
+void				get_color(t_data *data, int ac, char **av);
+void				color_shift(t_data *data);
+void				init_palette(t_fractdata *fractdata);
 
 // Event handling functions
 
-int				mouse_event(int keycode, int x, int y, t_data *data);
-int				key_event(int keycode, t_data *data);
+int					mouse_event(int keycode, int x, int y, t_data *data);
+int					key_event(int keycode, t_data *data);
 
 // Error/Exit handling and help message functions
 
-void			clean_exit(int exit_code, t_data *data);
-int				end_fractol(t_data *data);
-void			help_msg(t_data *data);
-int				msg(char *str1, char *str2, int errno);
-void			print_controls(void);
-void			print_color_options(void);
-void			print_fractal_options(void);
+void				clean_exit(int exit_code, t_data *data);
+int					end_fractol(t_data *data);
+void				help_msg(t_data *data);
+int					msg(char *str1, char *str2, int errno);
+void				print_controls(void);
+void				print_color_options(void);
+void				print_fractal_options(void);
 
 // Initialization functions
 
-void			clean_init(t_data *data);
-void			init(t_data *data);
-void			get_starting_complex(t_data *data, int ac, char **av);
-void			get_complex_plane(t_data *data);
-double			ft_atod(char *str);
+void				clean_init(t_data *data);
+void				init(t_data *data);
+void				get_starting_complex(t_data *data, int ac, char **av);
+void				get_complex_plane(t_data *data);
+double				ft_atod(char *str);
 
 // Rendering functions
 
-void			render(t_data *data);
+void				render(t_data *data);
 
 #endif

@@ -12,7 +12,7 @@
 
 # Compiler and flags
 CC       = cc
-CFLAGS   = -Wall -Wextra -Werror -Ofast -march=native -flto
+CFLAGS   = -pthread -Ofast -march=native -flto
 
 # Directories
 SRC_DIR  = srcs
@@ -44,6 +44,7 @@ BONUS_SRCS = $(BONUS_DIR)/fractol_bonus.c \
            $(BONUS_DIR)/init_bonus.c \
            $(BONUS_DIR)/init_helper_bonus.c \
            $(BONUS_DIR)/render_bonus.c \
+		   $(BONUS_DIR)/fractal_sets_bonus.c \
            $(BONUS_DIR)/color_bonus.c \
            $(BONUS_DIR)/event_handling_bonus.c \
            $(BONUS_DIR)/help_msg_bonus.c \
